@@ -243,18 +243,18 @@ include ('../view/login.php');
 ?>
 ```
 
-**session_start()** starts a new or resumes an existing session.
-**if (isset($_POST['email']) && ($_POST['password']))** checks whether the email and password inputs are set in the POST request.
-**$email = $_POST['email']; and $password = $_POST['password'];** store the email and password inputs in variables.
-**$db = new PDO('mysql:host = hostname', dbname = 'mydatabase', 'username', 'password');** connects to the MySQL database using PDO (PHP Data Objects).
-**$stmt = $db->prepare('SELECT id, password FROM users WHERE email = :email');** prepares a statement to select the user with the given email from the users table.
-**$stmt->execute(array(':email=>$email'));** executes the prepared statement with the email input as a parameter.
-**$user = $stmt->fetch(PDO::FETCH_ASSOC);** fetches the first row from the result set as an associative array and stores it in the $user variable.
-**if ($user && password_verify($password, $user['password']))** checks whether a user was found and whether the input password matches the hashed password in the database. password_verify() is a PHP function used to verify a password hash against a given password.
-**$_SESSION['user_id'] = $user['id'];** sets the user_id session variable to the ID of the authenticated user.
-**header('Location:index.php');** redirects the user to the index page.
+* **session_start()** starts a new or resumes an existing session.
+* **if (isset($_POST['email']) && ($_POST['password']))** checks whether the email and password inputs are set in the POST request.
+* **$email = $_POST['email']; and $password = $_POST['password'];** store the email and password inputs in variables.
+* **$db = new PDO('mysql:host = hostname', dbname = 'mydatabase', 'username', 'password');** connects to the MySQL database using PDO (PHP Data Objects).
+* **$stmt = $db->prepare('SELECT id, password FROM users WHERE email = :email');** prepares a statement to select the user with the given email from the users table.
+* **$stmt->execute(array(':email=>$email'));** executes the prepared statement with the email input as a parameter.
+* **$user = $stmt->fetch(PDO::FETCH_ASSOC);** fetches the first row from the result set as an associative array and stores it in the $user variable.
+* **if ($user && password_verify($password, $user['password']))** checks whether a user was found and whether the input password matches the hashed password in the database. password_verify() is a PHP function used to verify a password hash against a given password.
+* **$_SESSION['user_id'] = $user['id'];** sets the user_id session variable to the ID of the authenticated user.
+* **header('Location:index.php');** redirects the user to the index page.
 else {$error = "Invalid email or password";} sets an error message if the login was unsuccessful.
-**include ('../view/login.php');** includes the login page HTML, along with any error message that was set.
+* **include ('../view/login.php');** includes the login page HTML, along with any error message that was set.
 
 #### Listing 1-7.app/view/dashboard.php: Logged in user.
 ```php
