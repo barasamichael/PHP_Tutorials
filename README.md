@@ -31,7 +31,7 @@
         └── style.css
 ```
 
-Listing 1-1.app/model/UserModel.php: Handle all database queries for user management system.
+#### Listing 1-1.app/model/UserModel.php: Handle all database queries for user management system.
 ```php
 <?php
 class UserModel
@@ -74,7 +74,7 @@ The `getUsers()` method fetches all rows from the "users" table using a SELECT q
 The `addUser()` method inserts a new row into the "users" table using an INSERT query with named parameters to prevent SQL injection attacks. It takes two arguments - the name and email of the user to be added - and returns the auto-incremented ID of the newly added row using the `lastInsertId()` method of the PDO object.
 The `deleteUser()` method deletes a row from the "users" table with the specified ID using a DELETE query with a named parameter. It takes a single argument - the ID of the user to be deleted - and does not return anything.
 
-Listing 1-2.app/view/index.php: Display a list of all users and provide links to add or delete users.
+#### Listing 1-2.app/view/index.php: Display a list of all users and provide links to add or delete users.
 ```php
 <!DOCTYPE html>
 <html>
@@ -116,15 +116,14 @@ Listing 1-2.app/view/index.php: Display a list of all users and provide links to
 	</body>
 </html>
 ```
-
 This code generates a web page for a user management system. The page includes a table that displays a list of users and allows the user to delete an existing user or add a new user.
-In the HTML code, the <!DOCTYPE html> declaration specifies the document type, and the <html> element is the root element of the document. The <head> element contains metadata such as the title of the page and a link to an external stylesheet. The <body> element contains the visible content of the web page.
-The <h1> element displays the title of the page, "User Management System". The <table> element creates a table that contains the user information, including the ID, name, email, and a "Delete" button for each user. The table is constructed using the HTML <thead> and <tbody> elements.
-The PHP code is embedded within the HTML using the <?php ?> tags. The foreach loop iterates over an array of users and generates a new row in the table for each user. The echo statements display the user's ID, name, and email in their respective table cells.
-The "Delete" button in the last column of each row is an HTML <a> element that includes a link to the same page with a query string that specifies the user ID to be deleted. When the link is clicked, the user is redirected to the same page with the action parameter set to "delete" and the id parameter set to the ID of the user to be deleted.
-Finally, the "Add User" link at the bottom of the page is an HTML <a> element that provides a way for the user to add a new user to the system. When the link is clicked, the user is redirected to the same page with the action parameter set to "add".
+In the HTML code, the ```<!DOCTYPE html>```declaration specifies the document type, and the ```<html>``` element is the root element of the document. The ```<head>``` element contains metadata such as the title of the page and a link to an external stylesheet. The ```<body>``` element contains the visible content of the web page.
+The ```<h1>``` element displays the title of the page, "User Management System". The ```<table>``` element creates a table that contains the user information, including the ID, name, email, and a "Delete" button for each user. The table is constructed using the HTML ```<thead>``` and ```<tbody>``` elements.
+The PHP code is embedded within the HTML using the ```<?php ?>``` tags. The foreach loop iterates over an array of users and generates a new row in the table for each user. The echo statements display the user's ID, name, and email in their respective table cells.
+The "Delete" button in the last column of each row is an HTML ```<a>``` element that includes a link to the same page with a query string that specifies the user ID to be deleted. When the link is clicked, the user is redirected to the same page with the action parameter set to "delete" and the id parameter set to the ID of the user to be deleted.
+Finally, the "Add User" link at the bottom of the page is an HTML ```<a>``` element that provides a way for the user to add a new user to the system. When the link is clicked, the user is redirected to the same page with the action parameter set to "add".
 
-Listing 1-3.app/view/add.php: Display a form that allows users to add a new user.
+#### Listing 1-3.app/view/add.php: Display a form that allows users to add a new user.
 ```php
 <!DOCTYPE html>
 <html>
@@ -152,7 +151,7 @@ The PHP code within the HTML is used to generate the form and specify the requir
 The PHP code is generating a label for each input field using the HTML **"label" tag.** The **"for" attribute** of the **"label" tag** is set to match the **"name" attribute** of the corresponding input field, so that clicking on the label will focus the input field.
 Finally, a **"Submit" button** is added to the form to allow the user to submit the form data. When the user clicks the **"Submit" button**, the form data will be submitted to the server using the HTTP POST method.
 
-Listing 1-4.app/view/style.css: Apply styling to the view.
+#### Listing 1-4.app/view/style.css: Apply styling to the view.
 ```css
 table
 {
@@ -185,7 +184,7 @@ This is a block of CSS code defining the style for a table and its contents.
 **th**: This selector applies additional styles to table headers (th). The background-color property sets the background color of the header row to a light gray (#f2f2f2).
 **a**: This selector applies styles to all hyperlinks (a) in the HTML document. The color property sets the link color to blue. The text-decoration property adds an underline to the link text.
 
-Listing 1-5.app/view/login.php: Enable users to login into the system.
+#### Listing 1-5.app/view/login.php: Enable users to login into the system.
 ```php
 <!DOCTYPE html>
 <html>
@@ -208,7 +207,7 @@ Listing 1-5.app/view/login.php: Enable users to login into the system.
 </html>
 ```
 
-Listing 1-6.app/controller/login.php
+#### Listing 1-6.app/controller/login.php
 ```php
 <?php
 session_start();
@@ -257,7 +256,7 @@ include ('../view/login.php');
 else {$error = "Invalid email or password";} sets an error message if the login was unsuccessful.
 **include ('../view/login.php');** includes the login page HTML, along with any error message that was set.
 
-Listing 1-7.app/view/dashboard.php: Logged in user.
+#### Listing 1-7.app/view/dashboard.php: Logged in user.
 ```php
 <!DOCTYPE html>
 <html>
@@ -298,7 +297,7 @@ The code starts with an HTML structure, including a title and a link to a CSS fi
 If the user is logged in, it displays a welcome message along with a logout link. It also displays an unordered list of user names using a PHP foreach loop to iterate over an array of users.
 If the user is not logged in, it displays a message indicating that the user needs to be logged in to view the page, along with a link to the login page.
 
-Listing 1-8.app/controller/logout.php: Destroy session and redirect user to login page.
+#### Listing 1-8.app/controller/logout.php: Destroy session and redirect user to login page.
 ```php
 <?php
 session_start();
