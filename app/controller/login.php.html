@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>/mnt/d/Program Files/Ampps/www/dynamix/app/controller/login.php.html</title>
+<meta name="Generator" content="Vim/8.2">
+<meta name="plugin-version" content="vim8.1_v2">
+<meta name="syntax" content="php">
+<meta name="settings" content="use_css,pre_wrap,no_foldcolumn,prevent_copy=,use_input_for_pc=fallback">
+<meta name="colorscheme" content="none">
+<style>
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+* { font-size: 1em; }
+.Identifier { color: #008080; }
+.Statement { color: #af5f00; }
+.PreProc { color: #c000c0; }
+.Type { color: #008000; }
+.Comment { color: #0000c0; }
+.Constant { color: #c00000; }
+.Special { color: #c000c0; }
+-->
+</style>
+</head>
+<body>
+<pre id='vimCodeElement'>
+<span class="Special">&lt;?php</span>
+<span class="Identifier">session_start</span><span class="Special">()</span>;
+
+<span class="Statement">if</span> <span class="Special">(</span><span class="Statement">isset</span><span class="Special">(</span><span class="Statement">$</span><span class="Identifier">_POST</span><span class="Special">[</span><span class="Constant">'email'</span><span class="Special">])</span> <span class="Statement">&amp;&amp;</span> <span class="Special">(</span><span class="Statement">$</span><span class="Identifier">_POST</span><span class="Special">[</span><span class="Constant">'password'</span><span class="Special">]))</span>
+<span class="Special">{</span>
+	<span class="Statement">$</span><span class="Identifier">email</span> <span class="Statement">=</span> <span class="Statement">$</span><span class="Identifier">_POST</span><span class="Special">[</span><span class="Constant">'email'</span><span class="Special">]</span>;
+	<span class="Statement">$</span><span class="Identifier">password</span> <span class="Statement">=</span> <span class="Statement">$</span><span class="Identifier">_POST</span><span class="Special">[</span><span class="Constant">'password'</span><span class="Special">]</span>;
+
+	<span class="Comment">// connect to the database</span>
+	<span class="Statement">$</span><span class="Identifier">db</span> <span class="Statement">=</span> <span class="PreProc">new</span> <span class="Identifier">PDO</span><span class="Special">(</span><span class="Constant">'mysql:host = hostname'</span>, dbname <span class="Statement">=</span> <span class="Constant">'mydatabase'</span>, <span class="Constant">'username'</span>,
+		<span class="Constant">'password'</span><span class="Special">)</span>;
+
+	<span class="Comment">// query the database for the user with the given email</span>
+	<span class="Statement">$</span><span class="Identifier">stmt</span> <span class="Statement">=</span> <span class="Statement">$</span><span class="Identifier">db</span><span class="Type">-&gt;</span>prepare<span class="Special">(</span>
+		<span class="Constant">'SELECT id, password FROM users WHERE email = :email'</span><span class="Special">)</span>;
+	<span class="Statement">$</span><span class="Identifier">stmt</span><span class="Type">-&gt;</span>execute<span class="Special">(</span><span class="Type">array</span><span class="Special">(</span><span class="Constant">':email=&gt;$email'</span><span class="Special">))</span>;
+	<span class="Statement">$</span><span class="Identifier">user</span> <span class="Statement">=</span> <span class="Statement">$</span><span class="Identifier">stmt</span><span class="Type">-&gt;</span>fetch<span class="Special">(</span><span class="Identifier">PDO</span><span class="Statement">::</span>FETCH_ASSOC<span class="Special">)</span>;
+
+	<span class="Comment">// Verify the users password</span>
+	<span class="Statement">if</span> <span class="Special">(</span><span class="Statement">$</span><span class="Identifier">user</span> <span class="Statement">&amp;&amp;</span> <span class="Identifier">password_verify</span><span class="Special">(</span><span class="Statement">$</span><span class="Identifier">password</span>, <span class="Statement">$</span><span class="Identifier">user</span><span class="Special">[</span><span class="Constant">'password'</span><span class="Special">]))</span>
+	<span class="Special">{</span>
+		<span class="Statement">$</span><span class="Identifier">_SESSION</span><span class="Special">[</span><span class="Constant">'user_id'</span><span class="Special">]</span> <span class="Statement">=</span> <span class="Statement">$</span><span class="Identifier">user</span><span class="Special">[</span><span class="Constant">'id'</span><span class="Special">]</span>;
+		<span class="Identifier">header</span><span class="Special">(</span><span class="Constant">'Location:index.php'</span><span class="Special">)</span>;
+		<span class="Statement">exit</span>;
+	<span class="Special">}</span>
+	<span class="Statement">else</span>
+	<span class="Special">{</span>
+		<span class="Statement">$</span><span class="Identifier">error</span> <span class="Statement">=</span> <span class="Constant">&quot;Invalid email or password&quot;</span>;
+	<span class="Special">}</span>
+<span class="Special">}</span>
+<span class="PreProc">include</span> <span class="Special">(</span><span class="Constant">'../view/login.php'</span><span class="Special">)</span>;
+<span class="Special">?&gt;</span>
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->
