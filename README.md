@@ -118,11 +118,11 @@ Listing 1-2.app/view/index.php: Display a list of all users and provide links to
 ```
 
 This code generates a web page for a user management system. The page includes a table that displays a list of users and allows the user to delete an existing user or add a new user.
-In the HTML code, the **<!DOCTYPE html> declaration** specifies the document type, and the **<html> element** is the root element of the document. The <head> element contains metadata such as the title of the page and a link to an external stylesheet. The **<body> element** contains the visible content of the web page.
-The **<h1> element** displays the title of the page, "User Management System". The <table> element creates a table that contains the user information, including the ID, name, email, and a **"Delete"** button for each user. The table is constructed using the HTML **<thead>** and **<tbody> elements**.
-The PHP code is embedded within the HTML using the **<?php ?>** tags. The foreach loop iterates over an array of users and generates a new row in the table for each user. The echo statements display the user's ID, name, and email in their respective table cells.
-The **"Delete" button** in the last column of each row is an HTML <a> element that includes a link to the same page with a query string that specifies the user ID to be deleted. When the link is clicked, the user is redirected to the same page with the action parameter set to "delete" and the id parameter set to the ID of the user to be deleted.
-Finally, the **"Add User" link** at the bottom of the page is an HTML <a> element that provides a way for the user to add a new user to the system. When the link is clicked, the user is redirected to the same page with the action parameter set to "add".
+In the HTML code, the <!DOCTYPE html> declaration specifies the document type, and the <html> element is the root element of the document. The <head> element contains metadata such as the title of the page and a link to an external stylesheet. The <body> element contains the visible content of the web page.
+The <h1> element displays the title of the page, "User Management System". The <table> element creates a table that contains the user information, including the ID, name, email, and a "Delete" button for each user. The table is constructed using the HTML <thead> and <tbody> elements.
+The PHP code is embedded within the HTML using the <?php ?> tags. The foreach loop iterates over an array of users and generates a new row in the table for each user. The echo statements display the user's ID, name, and email in their respective table cells.
+The "Delete" button in the last column of each row is an HTML <a> element that includes a link to the same page with a query string that specifies the user ID to be deleted. When the link is clicked, the user is redirected to the same page with the action parameter set to "delete" and the id parameter set to the ID of the user to be deleted.
+Finally, the "Add User" link at the bottom of the page is an HTML <a> element that provides a way for the user to add a new user to the system. When the link is clicked, the user is redirected to the same page with the action parameter set to "add".
 
 Listing 1-3.app/view/add.php: Display a form that allows users to add a new user.
 ```php
